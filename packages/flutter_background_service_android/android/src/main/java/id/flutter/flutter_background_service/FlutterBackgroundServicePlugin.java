@@ -79,7 +79,12 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
         Intent intent = new Intent(context, BackgroundService.class);
 
         if (isForeground) {
-            ContextCompat.startForegroundService(context, intent);
+            try{
+                ContextCompat.startForegroundService(context, intent);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         } else {
             context.startService(intent);
         }
